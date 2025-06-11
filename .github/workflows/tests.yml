@@ -1,0 +1,15 @@
+name: Run Tests
+on: [push]  # Se ejecuta al hacer push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Entorno Linux (gratis en GitHub)
+    steps:
+      - uses: actions/checkout@v4  # Descarga tu código
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Instala Node.js automáticamente
+      - run: npm init -y    # Crea package.json
+      - run: npm install jest  # Instala Jest
+      - run: npm test       # Ejecuta las pruebas
